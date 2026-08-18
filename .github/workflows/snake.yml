@@ -7,7 +7,8 @@ on:
 
 jobs:
   build:
-    runs-level: write
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     steps:
       - name: Generate Snake SVG
