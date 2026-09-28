@@ -1,0 +1,49 @@
+name: Build profile
+
+# Re-renders every card in profile/ from generator/config.mjs and live GitHub data.
+on:
+  schedule:
+    - cron: "0 1 * * *" # 08:00 in Vietnam
+  push:
+    branches: [main]
+    paths:
+      - "generator/**"
+      - ".github/workflows/profile.yml"
+  workflow_dispatch:
+  # Other repos can ask for a refresh, e.g. after a new lesson or release (see generator/README.md).
+  repository_dispatch:
+    types: [refresh-profile]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-profile
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Render cards
+        run: node generator/build.mjs
+        env:
+          # A PAT lets the language card and private project cards see private repos; GITHUB_TOKEN covers public data.
+          GH_TOKEN: ${{ secrets.LINHTINH_TOKEN2 || secrets.GITHUB_TOKEN }}
+          # Optional. Add this secret to turn on profile/wakatime.svg.
+          WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}
+
+      # Runs even if one module failed, so the cards that did render still ship.
+      - name: Commit cards
+        if: ${{ !cancelled() }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add profile/
+          git diff --cached --quiet && exit 0
+          git commit -m "chore: rebuild profile cards"
+          git pull --rebase
+          git push

@@ -1,35 +1,27 @@
-# Hi, I'm Nguyen Anh Tuan
+<div align="center">
 
-### Java Backend Developer, still learning to become FullStack Developer
+<img src="./profile/hero.svg" width="100%" alt="Nguyen Anh Tuan: full-stack developer at DTH Software JSC, heading into DevOps">
+<img src="./profile/marquee.svg" width="100%" alt="Java, Spring Boot, Spring Security, Jmix, Vaadin, React, TypeScript, PostgreSQL, SQLite, Docker, GitLab CI, JavaFX, ONNX Runtime, Spring AI">
 
-<p>
-  <img src="./profile/stats.svg" height="160">
-  <img src="./profile/top-langs.svg" height="160">
+<img src="./profile/section-numbers.svg" width="100%" alt="01 By the numbers">
+<img src="./profile/stats.svg" width="49%" alt="Contribution stats for the last year">
+<img src="./profile/languages.svg" width="49%" alt="Most used languages across my repositories">
 
-  ![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
-  ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white)
-  ![Spring Security](https://img.shields.io/badge/Spring%20Security-6DB33F?style=for-the-badge&logo=springsecurity&logoColor=white)
-  ![Jmix](https://img.shields.io/badge/Jmix-0F6CBD?style=for-the-badge&logoColor=white)
+<img src="./profile/section-building.svg" width="100%" alt="02 What I'm building">
+<a href="https://github.com/AnhTuan2111/offline-translate-vi-en"><img src="./profile/project-offline-translate.svg" width="49%" alt="Offline Translate: English-Vietnamese desktop dictionary and translator that runs fully offline"></a>
+<a href="https://github.com/AnhTuan2111/RIMS"><img src="./profile/project-rims.svg" width="49%" alt="RIMS: restaurant internal management system, team lead"></a>
+<a href="https://github.com/AnhTuan2111/devops-self-learning"><img src="./profile/project-devops-self-learning.svg" width="49%" alt="DevOps self-learning: 43-lesson DevOps roadmap from Linux to CI/CD, learned in public"></a>
+<img src="./profile/project-iwork.svg" width="49%" alt="iWork: directive and KPI tracking platform at DTH Software (private)">
 
-  ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-  ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
-  ![Bootstrap](https://img.shields.io/badge/Bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)
+<img src="./profile/section-learning.svg" width="100%" alt="03 Road to DevOps">
+<a href="https://anhtuan2111.github.io/devops-self-learning/"><img src="./profile/learning.svg" width="100%" alt="DevOps from zero: lesson-by-lesson progress"></a>
 
-  ![SQL Server](https://img.shields.io/badge/SQL%20Server-CC2927?style=for-the-badge&logo=microsoftsqlserver&logoColor=white)
-  ![IntelliJ IDEA](https://img.shields.io/badge/IntelliJ%20IDEA-000000?style=for-the-badge&logo=intellijidea&logoColor=white)
-  ![VS Code](https://img.shields.io/badge/VS%20Code-007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=white)
-  ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white)
-</p>
+<img src="./profile/section-contrib.svg" width="100%" alt="04 Contribution graph">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/AnhTuan2111/AnhTuan2111/output/github-snake-dark.svg">
+  <img src="https://raw.githubusercontent.com/AnhTuan2111/AnhTuan2111/output/github-snake.svg" width="100%" alt="A snake eating my contribution graph">
+</picture>
 
----
+<img src="./profile/footer.svg" width="100%" alt="Thanks for scrolling">
 
-### Contributions over last year
-<p>
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/AnhTuan2111/AnhTuan2111/output/github-snake-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/AnhTuan2111/AnhTuan2111/output/github-snake.svg">
-    <img alt="GitHub Snake" src="https://raw.githubusercontent.com/AnhTuan2111/AnhTuan2111/output/github-snake.svg">
-  </picture>
-</p>
-
-
+</div>
