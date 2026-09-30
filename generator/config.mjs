@@ -82,11 +82,11 @@ export default {
       id: 'devops-self-learning',
       repo: 'devops-self-learning',
       title: 'DEVOPS SELF-LEARNING',
-      kicker: '43 LESSONS, LINUX -> CI/CD',
+      kicker: '39 LESSONS, DOCKER -> K8S',
       color: 'lime',
       tag: 'IN PROGRESS',
-      blurb: 'Learning DevOps from zero and writing it all down: Linux, networking, Docker, Nginx, production, CI/CD. Every lesson has theory, a lab and real error notes.',
-      stack: ['Linux', 'Docker', 'Nginx', 'GitHub Actions'],
+      blurb: 'DevOps from zero, learned in public: Docker first, then a real server, GitLab CI, Kubernetes and Rancher. Each lesson has theory, a lab and real errors.',
+      stack: ['Docker', 'GitLab CI', 'Kubernetes', 'Rancher'],
     },
     {
       id: 'iwork',
@@ -107,6 +107,6 @@ export default {
     curriculum: 'https://raw.githubusercontent.com/AnhTuan2111/devops-self-learning/main/curriculum.json',
     progress: 'https://raw.githubusercontent.com/AnhTuan2111/devops-self-learning/main/progress.json',
     cta: 'READ THE LOG',
-    labels: { M0: 'BASICS', M1: 'LINUX', M2: 'NETWORK', M3: 'DOCKER', M4: 'NGINX', M5: 'PROD', M6: 'CI/CD', M7: 'MONITOR', M8: 'SCALE' },
+    labels: { M0: 'BASICS', M1: 'DOCKER', M2: 'SERVER', M3: 'GITLAB CI', M4: 'K8S', M5: 'RANCHER' },
   },
 };

@@ -10,7 +10,7 @@
 <img src="./profile/section-building.svg" width="100%" alt="02 What I'm building">
 <a href="https://github.com/AnhTuan2111/offline-translate-vi-en"><img src="./profile/project-offline-translate.svg" width="49%" alt="Offline Translate: English-Vietnamese desktop dictionary and translator that runs fully offline"></a>
 <a href="https://github.com/AnhTuan2111/RIMS"><img src="./profile/project-rims.svg" width="49%" alt="RIMS: restaurant internal management system, team lead"></a>
-<a href="https://github.com/AnhTuan2111/devops-self-learning"><img src="./profile/project-devops-self-learning.svg" width="49%" alt="DevOps self-learning: 43-lesson DevOps roadmap from Linux to CI/CD, learned in public"></a>
+<a href="https://github.com/AnhTuan2111/devops-self-learning"><img src="./profile/project-devops-self-learning.svg" width="49%" alt="DevOps self-learning: 39-lesson DevOps roadmap from Docker to Kubernetes and Rancher, learned in public"></a>
 <img src="./profile/project-iwork.svg" width="49%" alt="iWork: directive and KPI tracking platform at DTH Software (private)">
 
 <img src="./profile/section-learning.svg" width="100%" alt="03 Road to DevOps">
