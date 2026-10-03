@@ -18,7 +18,8 @@ export default async function marquee({ config, theme: t }) {
   for (let i = 0; i < copies; i++) track += `<g transform="translate(${r(band.x + 16 + i * seqW)} 0)">${seq}</g>`;
 
   const body =
-    t.box({ ...band, fill: t.yellow, stroke: 3, shadow: 6 }) +
+    // Band colour can be set per config (`marquee: { fill: 'pink' }`); yellow by default.
+    t.box({ ...band, fill: t[config.marquee?.fill] ?? t.yellow, stroke: 3, shadow: 6 }) +
     `<clipPath id="band"><rect x="${band.x + 2}" y="${band.y}" width="${band.w - 4}" height="${band.h}"/></clipPath>` +
     `<g clip-path="url(#band)"><g class="track">${track}</g></g>`;
 

@@ -1,13 +1,19 @@
 // Renders every enabled module in config.mjs to an SVG in the output folder.
 //   node generator/build.mjs            all modules
 //   node generator/build.mjs hero stats only these
+//   node generator/build.mjs --config=path/to/other-config.mjs --out=preview
+//                                       render another config somewhere else, leaving profile/ alone
 // Needs GH_TOKEN (or GITHUB_TOKEN) for the GitHub API; WAKATIME_API_KEY is optional.
 import { mkdir, writeFile } from 'node:fs/promises';
-import { join } from 'node:path';
-import config from './config.mjs';
+import { join, resolve } from 'node:path';
+import { pathToFileURL } from 'node:url';
 import { makeTheme } from './lib/svg.mjs';
 import { loadUser, loadRepo, calendarStats } from './lib/github.mjs';
 import { loadLearning } from './lib/learning.mjs';
+
+const args = process.argv.slice(2);
+const flag = (name) => args.find((a) => a.startsWith(`--${name}=`))?.slice(name.length + 3);
+const { default: config } = await import(flag('config') ? pathToFileURL(resolve(flag('config'))).href : './config.mjs');
 
 const token = process.env.GH_TOKEN || process.env.GITHUB_TOKEN;
 const memo = (fn) => {
@@ -37,8 +43,8 @@ const data = {
 };
 
 const ctx = { config, theme: makeTheme(config.palette), data, now: new Date() };
-const only = process.argv.slice(2);
-const outDir = join(process.cwd(), config.outDir);
+const only = args.filter((a) => !a.startsWith('--'));
+const outDir = resolve(flag('out') ?? config.outDir);
 await mkdir(outDir, { recursive: true });
 
 const failed = [];

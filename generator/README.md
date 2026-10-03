@@ -17,6 +17,10 @@ Secrets đang dùng: `LINHTINH_TOKEN2` (PAT, để thấy repo private khi tính
 
 Mọi chữ trên profile nằm trong `generator/config.mjs`: tên, role, danh sách tech chạy ngang, tiêu đề section, các project card, màu. Sửa xong thì push, workflow tự vẽ lại.
 
+**Màu.** Bảng màu là đỏ, xanh lam, vàng, mỗi màu một tông đậm và một tông nhạt, trên nền kem. Tên các ô màu trong `palette` (`pink`, `orange`, `lime`, `violet`) là tên cũ từ thiết kế 6 màu ban đầu; xem chú thích bên cạnh để biết ô nào là màu gì. Màu nào cũng phải đủ sáng để chữ đen đặt lên đọc được. Nếu đổi bảng màu, nhớ đổi cả màu rắn trong `.github/workflows/snake.yml`.
+
+**Lưới project.** Bốn card là bốn hình chữ nhật khác cỡ, mỗi card nghiêng một góc (`width`, `height`, `tilt` trong `config.projects`). Hai card cùng một hàng trong README phải có cùng `height` và tổng `width` bằng 1000; README hiển thị chúng theo đúng tỉ lệ đó (57% + 42%, 46% + 53%). Hai thẻ ảnh của một hàng phải nằm trên **cùng một dòng, không có khoảng trắng ở giữa**, nếu không card thứ hai sẽ rớt xuống dòng trên điện thoại. Bỏ `width`, `height`, `tilt` thì card trở về cỡ đều 500 x 300 (hai ảnh `width="49%"`).
+
 Font nhúng chỉ có ký tự ASCII, nên chữ tiếng Việt có dấu sẽ bị bỏ dấu (`Việt` → `Viet`). Chữ lấy từ API cũng được xử lý như vậy.
 
 ## Chạy thử trên máy
@@ -24,19 +28,25 @@ Font nhúng chỉ có ký tự ASCII, nên chữ tiếng Việt có dấu sẽ b
 ```bash
 GH_TOKEN=$(gh auth token) node generator/build.mjs            # tất cả module
 GH_TOKEN=$(gh auth token) node generator/build.mjs hero stats # chỉ vài module
+
+# Thử một config khác mà không đụng tới profile/ (ví dụ một bảng màu mới):
+GH_TOKEN=$(gh auth token) node generator/build.mjs --config=duong/dan/config-thu.mjs --out=thu-muc-tam
 ```
+
+Config thử chỉ cần import config chính rồi ghi đè phần muốn đổi: `import base from '.../generator/config.mjs'; export default { ...base, palette: { ... } };`
 
 ## Các module
 
 | Module | File sinh ra | Dữ liệu |
 |---|---|---|
 | `hero` | `hero.svg` | Tên, role, tổng contribution, repo public vừa push gần nhất; thanh loading cạnh `DEVOPS` lấy từ tiến độ bài học |
-| `marquee` | `marquee.svg` | `config.stack` |
+| `marquee` | `marquee.svg` | `config.stack`; màu dải lấy từ `config.marquee.fill` |
 | `sections` | `section-*.svg` | `config.sections` |
 | `stats` | `stats.svg` | Contribution calendar: streak, số ngày active, 16 tuần gần nhất |
 | `languages` | `languages.svg` | Tổng số byte theo ngôn ngữ trên mọi repo bạn sở hữu |
-| `projects` | `project-*.svg` | `config.projects` + dữ liệu repo (ngày push, sao, commit) |
-| `learning` | `learning.svg` | `curriculum.json` + `progress.json` của repo devops-self-learning (`data.learning()`) |
+| `projects` | `project-*.svg` | `config.projects` + dữ liệu repo (ngày push, sao, commit); mỗi card có thể đặt cỡ và góc nghiêng riêng |
+| `roadmap` | `roadmap.svg` | Dải DevOps gọn: `curriculum.json` + `progress.json` của repo devops-self-learning (`data.learning()`) |
+| `learning` | `learning.svg` | Bản đầy đủ của roadmap, cùng dữ liệu. Đang tắt; đổi `roadmap` thành `learning` trong `modules` và trong README để dùng lại |
 | `wakatime` | `wakatime.svg` | WakaTime 7 ngày; tự bỏ qua nếu chưa có `WAKATIME_API_KEY` |
 | `footer` | `footer.svg` | Ngày build |
 

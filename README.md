@@ -7,14 +7,13 @@
 <img src="./profile/stats.svg" width="49%" alt="Contribution stats for the last year">
 <img src="./profile/languages.svg" width="49%" alt="Most used languages across my repositories">
 
+<!-- Each pair below must stay on one line with no space between the tags, or the second card wraps on phones. -->
 <img src="./profile/section-building.svg" width="100%" alt="02 What I'm building">
-<a href="https://github.com/AnhTuan2111/offline-translate-vi-en"><img src="./profile/project-offline-translate.svg" width="49%" alt="Offline Translate: English-Vietnamese desktop dictionary and translator that runs fully offline"></a>
-<a href="https://github.com/AnhTuan2111/RIMS"><img src="./profile/project-rims.svg" width="49%" alt="RIMS: restaurant internal management system, team lead"></a>
-<a href="https://github.com/AnhTuan2111/devops-self-learning"><img src="./profile/project-devops-self-learning.svg" width="49%" alt="DevOps self-learning: 41-lesson DevOps roadmap from Docker to Kubernetes and Rancher, learned in public"></a>
-<img src="./profile/project-iwork.svg" width="49%" alt="iWork: directive and KPI tracking platform at DTH Software (private)">
+<a href="https://github.com/AnhTuan2111/offline-translate-vi-en"><img src="./profile/project-offline-translate.svg" width="57%" alt="Offline Translate: English-Vietnamese desktop dictionary and translator that runs fully offline"></a><a href="https://github.com/AnhTuan2111/RIMS"><img src="./profile/project-rims.svg" width="42%" alt="RIMS: restaurant internal management system, team lead"></a>
+<img src="./profile/project-iwork.svg" width="46%" alt="iWork: directive and KPI tracking platform at DTH Software (private)"><a href="https://github.com/AnhTuan2111/devops-self-learning"><img src="./profile/project-devops-self-learning.svg" width="53%" alt="DevOps self-learning: 41-lesson DevOps roadmap from Docker to Kubernetes and Rancher, learned in public"></a>
 
 <img src="./profile/section-learning.svg" width="100%" alt="03 Road to DevOps">
-<a href="https://anhtuan2111.github.io/devops-self-learning/"><img src="./profile/learning.svg" width="100%" alt="DevOps from zero: lesson-by-lesson progress"></a>
+<a href="https://anhtuan2111.github.io/devops-self-learning/"><img src="./profile/roadmap.svg" width="100%" alt="DevOps from zero: lesson-by-lesson progress"></a>
 
 <img src="./profile/section-contrib.svg" width="100%" alt="04 Contribution graph">
 <picture>
