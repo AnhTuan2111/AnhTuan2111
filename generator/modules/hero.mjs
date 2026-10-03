@@ -12,26 +12,21 @@ export default async function hero({ config, theme: t, data }) {
     ? await data.learning().then((l) => Math.floor((l.doneCount / l.all.length) * segs), () => 0)
     : h.nextProgress;
 
-  const W = 1000, H = 440;
-  const F = { x: 4, y: 4, w: 984, h: 420 }; // frame
+  const W = 1000, H = 396;
+  const F = { x: 4, y: 4, w: 984, h: 376 }; // frame
   let b = '';
 
-  // Frame, dotted paper and the black title bar.
-  b += t.box({ ...F, fill: t.paper, stroke: 4, shadow: 8, cls: 'edge' });
+  // Frame and dotted paper. No title bar: GitHub already prints "<login> / README.md" above the README.
+  b += t.box({ ...F, fill: t.paper, stroke: 4, shadow: 8 });
   b += `<defs><pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="11" cy="11" r="1.6" fill="${t.ink}" opacity=".16"/></pattern></defs>`;
-  b += `<rect x="6" y="52" width="980" height="370" fill="url(#dots)"/>`;
-  b += `<rect class="edge" x="4" y="4" width="984" height="48" fill="${t.ink}" stroke="${t.ink}" stroke-width="4"/>`;
-  b += text(`${config.login.toLowerCase()} / README.md`, { x: 24, y: capBaseline(4, 48, 'monoBold', 15), font: 'monoBold', size: 15, fill: t.paper });
-  [t.pink, t.yellow, t.lime].forEach((c, i) => {
-    b += `<rect x="${904 + i * 26}" y="19" width="18" height="18" fill="${c}" stroke="${t.paper}" stroke-width="2.5"/>`;
-  });
+  b += `<rect x="6" y="6" width="980" height="372" fill="url(#dots)"/>`;
 
   // Name, with an offset colour copy of the first line and a highlighter block behind the second.
   const nameSize = Math.min(96, ...h.name.map((l) => fitSize(l, 'display', 96, 560)));
   const cap = 0.688 * nameSize;
   const [l1, l2] = h.name;
-  const base1 = 192, base2 = base1 + cap + 30;
-  b += t.chip(h.greeting, { x: 40, y: 78, size: 14, fill: t.lime, rotate: -3, shadow: 4 }).svg;
+  const base1 = 148, base2 = base1 + cap + 30;
+  b += t.chip(h.greeting, { x: 40, y: 34, size: 14, fill: t.lime, rotate: -3, shadow: 4 }).svg;
   b += text(l1, { x: 45, y: base1 + 5, font: 'display', size: nameSize, fill: t.pink });
   b += text(l1, { x: 40, y: base1, font: 'display', size: nameSize, fill: t.ink });
   const w2 = measure(l2, 'display', nameSize);
@@ -69,7 +64,7 @@ export default async function hero({ config, theme: t, data }) {
   });
 
   // Starburst: contributions over the last year.
-  const cx = 836, cy = 176;
+  const cx = 836, cy = 136;
   b += `<g class="spin"><polygon points="${burst(cx + 6, cy + 6, 112, 94, 20)}" class="sh"/><polygon points="${burst(cx, cy, 112, 94, 20)}" fill="${t.blue}" stroke="${t.ink}" stroke-width="3.5" stroke-linejoin="round"/></g>`;
   const total = fmtNum(stats.total);
   b += text(total, { x: cx, y: cy + 4, font: 'display', size: fitSize(total, 'display', 46, 150), fill: t.ink, anchor: 'middle' });
@@ -79,7 +74,7 @@ export default async function hero({ config, theme: t, data }) {
   // Sticker: most recently pushed public repo.
   if (latest) {
     const name = toAscii(latest.name).toUpperCase();
-    const s = { x: 700, y: 306, w: 262, h: 92 };
+    const s = { x: 700, y: 264, w: 262, h: 92 };
     const size = fitSize(name, 'display', 26, s.w - 36, 14);
     b += `<g transform="rotate(3 ${s.x + s.w / 2} ${s.y + s.h / 2})">`;
     b += t.box({ ...s, fill: t.pink, stroke: 3, shadow: 6 });
@@ -90,8 +85,8 @@ export default async function hero({ config, theme: t, data }) {
   }
 
   // Loose decorations.
-  b += sparkle(640, 104, 20, t.yellow, `stroke="${t.ink}" stroke-width="3" stroke-linejoin="round"`);
-  b += sparkle(672, 138, 10, t.pink, `stroke="${t.ink}" stroke-width="2.5" stroke-linejoin="round"`);
+  b += sparkle(640, 62, 20, t.yellow, `stroke="${t.ink}" stroke-width="3" stroke-linejoin="round"`);
+  b += sparkle(672, 96, 10, t.pink, `stroke="${t.ink}" stroke-width="2.5" stroke-linejoin="round"`);
 
   const css = `
 .spin{transform-origin:${cx}px ${cy}px;animation:spin 48s linear infinite}

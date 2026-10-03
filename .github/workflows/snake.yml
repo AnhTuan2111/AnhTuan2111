@@ -13,15 +13,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Colours match generator/config.mjs: cream -> light red -> red -> ink, with a blue snake (yellow on dark).
+      # One red ramp, matching generator/config.mjs: busier days are a deeper red on light pages and a
+      # brighter red on dark ones. Blue snake on light, yellow on dark.
       - name: Generate snake SVG
         uses: platane/snk@v3
         with:
           github_user_name: ${{ github.repository_owner }}
           github_token: ${{ secrets.LINHTINH_TOKEN }}
           outputs: |
-            dist/github-snake.svg?color_snake=#3F82E0&color_dots=#E8DFC8,#F7C0B6,#F2857A,#EE4B3A,#141414
-            dist/github-snake-dark.svg?color_snake=#F4C92E&color_dots=#1E222A,#571A14,#A63528,#EE4B3A,#F4ECD8
+            dist/github-snake.svg?color_snake=#3F82E0&color_dots=#E8DFC8,#F7C6BC,#F1907F,#E9523F,#A9241A
+            dist/github-snake-dark.svg?color_snake=#F4C92E&color_dots=#1E222A,#5A1A13,#9C2F23,#DC4433,#FF7461
 
       - name: Push to output branch
         uses: crazy-max/ghaction-github-pages@v5
