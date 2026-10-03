@@ -82,7 +82,7 @@ export default {
       id: 'devops-self-learning',
       repo: 'devops-self-learning',
       title: 'DEVOPS SELF-LEARNING',
-      kicker: '39 LESSONS, DOCKER -> K8S',
+      kicker: '41 LESSONS, DOCKER -> K8S',
       color: 'lime',
       tag: 'IN PROGRESS',
       blurb: 'DevOps from zero, learned in public: Docker first, then a real server, GitLab CI, Kubernetes and Rancher. Each lesson has theory, a lab and real errors.',
