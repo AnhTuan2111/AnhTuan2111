@@ -71,14 +71,14 @@ export default {
   projects: [
     {
       id: 'offline-translate',
-      repo: 'offline-translate-vi-en',
-      title: 'OFFLINE TRANSLATE',
+      repo: 'DictPocket',
+      title: 'DICTPOCKET',
       kicker: 'EN <-> VI DESKTOP APP',
       color: 'pink',
       width: 576, height: 326, tilt: -1.6,
       tag: (repo) => `${repo?.latestTag ?? 'v1.0.0'} SHIPPED`,
-      blurb: 'Dictionary + sentence translator for Windows that never touches the internet. 109K entries, 13.7 µs lookups, local neural MT on ONNX.',
-      stack: ['Java 25', 'JavaFX', 'ONNX Runtime', 'SQLite'],
+      blurb: 'Offline EN-VI dictionary + sentence translator for Windows, in a Win9x pixel UI. 109K entries, 13.7 µs lookups, local neural MT on ONNX.',
+      stack: ['Java 25', 'JavaFX', 'ONNX Runtime', 'jpackage'],
     },
     {
       id: 'rims',
