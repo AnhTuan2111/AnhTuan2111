@@ -102,7 +102,7 @@ export default async function hero({ config, theme: t, data }) {
     svg: doc({
       w: W, h: H, theme: t, css, body: b,
       title: who,
-      desc: `${h.meta.join(' / ')}. ${total} contributions in the last year.${latest ? ` Currently pushing to ${latest.name}.` : ''}`,
+      desc: `${h.meta.length ? `${h.meta.join(' / ')}. ` : ''}${total} contributions in the last year.${latest ? ` Currently pushing to ${latest.name}.` : ''}`,
     }),
   }];
 }

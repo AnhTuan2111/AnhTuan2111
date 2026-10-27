@@ -9,7 +9,7 @@ export default {
   // Modules to render, one file each in generator/modules/. Remove a name to stop rendering that card;
   // add a new file + name here to plug in your own. `wakatime` skips itself until WAKATIME_API_KEY is set.
   // `roadmap` is the compact DevOps strip; swap it for `learning` to get the full-size card back.
-  modules: ['hero', 'marquee', 'sections', 'stats', 'languages', 'projects', 'roadmap', 'wakatime', 'footer'],
+  modules: ['hero', 'marquee', 'sections', 'stats', 'languages', 'wakatime', 'footer'],
 
   // Red, blue and yellow, each in a strong and a light tone, on cream. The cards were first written for six
   // unrelated accents, so the slot names (pink, orange, lime, violet) are historical: go by the comments.
@@ -34,7 +34,8 @@ export default {
     next: 'DEVOPS',
     // Loading bar after `next`: 'learning' fills it from the DevOps roadmap below, or pin it with a number 0-6.
     nextProgress: 'learning',
-    meta: ['DTH SOFTWARE JSC', 'VIETNAM, GMT+7', 'SPRING BOOT x JMIX x REACT'],
+    // Sparkle-separated line under the role; empty draws nothing.
+    meta: [],
     // "Currently pushing to" sticker picks your most recently pushed public repo, except these.
     nowExclude: ['AnhTuan2111'],
   },
@@ -49,8 +50,6 @@ export default {
   // Section dividers, rendered to profile/section-<id>.svg.
   sections: [
     { id: 'numbers', title: 'BY THE NUMBERS', note: 'UPDATED DAILY' },
-    { id: 'building', title: "WHAT I'M BUILDING", note: '3 PUBLIC / 1 AT WORK' },
-    { id: 'learning', title: 'ROAD TO DEVOPS', note: 'LEARNING IN PUBLIC' },
     { id: 'contrib', title: 'CONTRIBUTION GRAPH', note: 'EATEN DAILY' },
   ],
 
