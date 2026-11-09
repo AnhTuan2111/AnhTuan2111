@@ -13,8 +13,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # One red ramp, matching generator/config.mjs: busier days are a deeper red on light pages and a
-      # brighter red on dark ones. Blue snake on light, yellow on dark.
+      # One red ramp: busier days are a deeper red on light pages and a brighter red on dark ones.
+      # Blue snake on light, yellow on dark.
       - name: Generate snake SVG
         uses: platane/snk@v3
         with:
