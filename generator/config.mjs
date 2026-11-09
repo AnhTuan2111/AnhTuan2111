@@ -7,9 +7,10 @@ export default {
   outDir: 'profile',
 
   // Modules to render, one file each in generator/modules/. Remove a name to stop rendering that card;
-  // add a new file + name here to plug in your own. `wakatime` skips itself until WAKATIME_API_KEY is set.
-  // `roadmap` is the compact DevOps strip; swap it for `learning` to get the full-size card back.
-  modules: ['hero', 'marquee', 'sections', 'stats', 'languages', 'wakatime', 'footer'],
+  // add a new file + name here to plug in your own. The README only shows `orbit` now; the other modules
+  // (hero, marquee, sections, stats, languages, wakatime, footer, projects, roadmap, learning) still work
+  // and keep their settings below, so adding a name back plus an <img> in README.md brings that card back.
+  modules: ['orbit'],
 
   // Red, blue and yellow, each in a strong and a light tone, on cream. The cards were first written for six
   // unrelated accents, so the slot names (pink, orange, lime, violet) are historical: go by the comments.
@@ -30,8 +31,9 @@ export default {
   hero: {
     greeting: "HELLO, I'M",
     name: ['NGUYEN', 'ANH TUAN'],
-    role: 'FULLSTACK DEVELOPER',
-    next: 'DEVOPS',
+    role: 'DEVOPS ENGINEER',
+    // Set `next` (e.g. 'SRE') to draw "ROLE -> NEXT" with a loading bar after it; null draws the role alone.
+    next: null,
     // Loading bar after `next`: 'learning' fills it from the DevOps roadmap below, or pin it with a number 0-6.
     nextProgress: 'learning',
     // Sparkle-separated line under the role; empty draws nothing.
@@ -41,8 +43,8 @@ export default {
   },
 
   stack: [
-    'JAVA', 'SPRING BOOT', 'SPRING SECURITY', 'JMIX', 'VAADIN', 'REACT', 'TYPESCRIPT',
-    'POSTGRESQL', 'SQLITE', 'DOCKER', 'GITLAB CI', 'JAVAFX', 'ONNX RUNTIME', 'SPRING AI',
+    'DOCKER', 'KUBERNETES', 'OPENSHIFT', 'RANCHER', 'ARGO CD', 'GITLAB CI', 'HARBOR', 'PORTAINER',
+    'PROMETHEUS', 'GRAFANA', 'LOKI', 'NGINX', 'HAPROXY', 'PATRONI', 'POSTGRESQL', 'MINIO', 'KEYCLOAK',
   ],
   // Band colour of the scrolling stack strip (a palette slot name).
   marquee: { fill: 'pink' },
@@ -51,6 +53,32 @@ export default {
   sections: [
     { id: 'numbers', title: 'BY THE NUMBERS', note: 'UPDATED DAILY' },
     { id: 'contrib', title: 'CONTRIBUTION GRAPH', note: 'EATEN DAILY' },
+  ],
+
+  // Header: name and role in the middle, tool logos circling them. Rings fill in order from config.tools,
+  // innermost first, and their counts must add up to the number of tools. `seconds` is one lap.
+  orbit: {
+    name: 'Nguyễn Anh Tuấn',
+    role: 'DevOps engineer',
+    rings: [
+      { rx: 205, ry: 98, count: 6, seconds: 46 },
+      { rx: 305, ry: 148, count: 10, seconds: 64, reverse: true },
+      { rx: 405, ry: 205, count: 13, seconds: 84 },
+    ],
+  },
+
+  // Tools I have run myself. `id` names the logo in generator/logos/ (official marks, see logos/SOURCES.md).
+  tools: [
+    { id: 'docker', name: 'Docker' }, { id: 'kaniko', name: 'Kaniko' }, { id: 'harbor', name: 'Harbor' },
+    { id: 'gitlab', name: 'GitLab CI' }, { id: 'githubactions', name: 'GitHub Actions' }, { id: 'argocd', name: 'Argo CD' },
+    { id: 'kubernetes', name: 'Kubernetes' }, { id: 'openshift', name: 'OpenShift' }, { id: 'rancher', name: 'Rancher' },
+    { id: 'longhorn', name: 'Longhorn' }, { id: 'portainer', name: 'Portainer' }, { id: 'ubuntu', name: 'Ubuntu' },
+    { id: 'bash', name: 'Bash' }, { id: 'incus', name: 'Incus' }, { id: 'nginx', name: 'Nginx' },
+    { id: 'npm', name: 'Nginx Proxy Manager' }, { id: 'haproxy', name: 'HAProxy' }, { id: 'keycloak', name: 'Keycloak' },
+    { id: 'openvpn', name: 'OpenVPN' }, { id: 'prometheus', name: 'Prometheus' }, { id: 'grafana', name: 'Grafana' },
+    { id: 'loki', name: 'Loki' }, { id: 'alloy', name: 'Alloy' }, { id: 'postgresql', name: 'PostgreSQL' },
+    { id: 'patroni', name: 'Patroni' }, { id: 'etcd', name: 'etcd' }, { id: 'redis', name: 'Redis' },
+    { id: 'minio', name: 'MinIO' }, { id: 'rclone', name: 'rclone' },
   ],
 
   languages: {
