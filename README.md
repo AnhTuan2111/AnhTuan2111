@@ -1,18 +1,17 @@
 <div align="center">
 
-<img src="./profile/hero.svg" width="100%" alt="Nguyen Anh Tuan: full-stack developer heading into DevOps">
-<img src="./profile/marquee.svg" width="100%" alt="Java, Spring Boot, Spring Security, Jmix, Vaadin, React, TypeScript, PostgreSQL, SQLite, Docker, GitLab CI, JavaFX, ONNX Runtime, Spring AI">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./profile/orbit-dark.svg">
+  <img src="./profile/orbit-light.svg" width="100%" alt="Nguyễn Anh Tuấn, DevOps engineer, with the logos of the tools I run circling the name: Docker, Kaniko, Harbor, GitLab CI, GitHub Actions, Argo CD, Kubernetes, OpenShift, Rancher, Longhorn, Portainer, Ubuntu, Bash, Incus, Nginx, Nginx Proxy Manager, HAProxy, Keycloak, OpenVPN, Prometheus, Grafana, Loki, Alloy, PostgreSQL, Patroni, etcd, Redis, MinIO, rclone">
+</picture>
 
-<img src="./profile/section-numbers.svg" width="100%" alt="By the numbers">
-<img src="./profile/stats.svg" width="49%" alt="Contribution stats for the last year">
-<img src="./profile/languages.svg" width="49%" alt="Most used languages across my repositories">
+A mercenary DevOps
 
-<img src="./profile/section-contrib.svg" width="100%" alt="Contribution graph">
+<br>
+
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/AnhTuan2111/AnhTuan2111/output/github-snake-dark.svg">
   <img src="https://raw.githubusercontent.com/AnhTuan2111/AnhTuan2111/output/github-snake.svg" width="100%" alt="A snake eating my contribution graph">
 </picture>
-
-<img src="./profile/footer.svg" width="100%" alt="Thanks for scrolling">
 
 </div>
