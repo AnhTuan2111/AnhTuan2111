@@ -8,7 +8,8 @@ export default async function hero({ config, theme: t, data }) {
   const latest = user.repositories.nodes.find((r) => !r.isPrivate && !h.nowExclude.includes(r.name));
   const segs = 6;
   // 'learning' fills the bar from real lesson progress; a number pins it. An unreachable repo just shows 0.
-  const filled = h.nextProgress === 'learning'
+  // No `next` means no arrow and no bar, so the lesson progress is not fetched either.
+  const filled = !h.next ? 0 : h.nextProgress === 'learning'
     ? await data.learning().then((l) => Math.floor((l.doneCount / l.all.length) * segs), () => 0)
     : h.nextProgress;
 
@@ -34,21 +35,23 @@ export default async function hero({ config, theme: t, data }) {
   b += text(l2, { x: 40, y: base2, font: 'display', size: nameSize, fill: t.ink });
   b += `<rect class="cursor" x="${r(40 + w2 + 10)}" y="${r(base2 - cap)}" width="${r(nameSize * 0.34)}" height="${r(cap)}" fill="${t.ink}"/>`;
 
-  // Role: "FULLSTACK DEVELOPER -> DEVOPS [#-----]".
+  // Role, optionally followed by "-> NEXT [#-----]" when `next` is set.
   const roleY = base2 + 30;
   const role = t.chip(h.role, { x: 40, y: roleY, size: 15, h: 38, fill: t.ink, color: t.paper, shadow: 4, padX: 14 });
   b += role.svg;
-  const ax = 40 + role.w + 14, ay = roleY + 19;
-  b += `<path d="M${ax} ${ay}h26" stroke="${t.ink}" stroke-width="5"/><path d="M${ax + 22} ${ay - 9}l12 9-12 9z" fill="${t.ink}"/>`;
-  const nx = ax + 48, segW = 11;
-  const nw = measure(h.next, 'monoBold', 15, 0.5) + 28 + segs * (segW + 3) + 8;
-  b += t.box({ x: nx, y: roleY, w: nw, h: 38, fill: t.paper, stroke: 2.5, shadow: 4 });
-  b += text(h.next, { x: nx + 14, y: capBaseline(roleY, 38, 'monoBold', 15), font: 'monoBold', size: 15, fill: t.ink, ls: 0.5 });
-  const sx = nx + nw - 8 - segs * (segW + 3);
-  for (let i = 0; i < segs; i++) {
-    const on = i < filled;
-    const cls = i === filled ? ' class="pulse"' : '';
-    b += `<rect${cls} x="${r(sx + i * (segW + 3))}" y="${roleY + 11}" width="${segW}" height="16" fill="${on || cls ? t.pink : t.paper}" stroke="${t.ink}" stroke-width="2"/>`;
+  if (h.next) {
+    const ax = 40 + role.w + 14, ay = roleY + 19;
+    b += `<path d="M${ax} ${ay}h26" stroke="${t.ink}" stroke-width="5"/><path d="M${ax + 22} ${ay - 9}l12 9-12 9z" fill="${t.ink}"/>`;
+    const nx = ax + 48, segW = 11;
+    const nw = measure(h.next, 'monoBold', 15, 0.5) + 28 + segs * (segW + 3) + 8;
+    b += t.box({ x: nx, y: roleY, w: nw, h: 38, fill: t.paper, stroke: 2.5, shadow: 4 });
+    b += text(h.next, { x: nx + 14, y: capBaseline(roleY, 38, 'monoBold', 15), font: 'monoBold', size: 15, fill: t.ink, ls: 0.5 });
+    const sx = nx + nw - 8 - segs * (segW + 3);
+    for (let i = 0; i < segs; i++) {
+      const on = i < filled;
+      const cls = i === filled ? ' class="pulse"' : '';
+      b += `<rect${cls} x="${r(sx + i * (segW + 3))}" y="${roleY + 11}" width="${segW}" height="16" fill="${on || cls ? t.pink : t.paper}" stroke="${t.ink}" stroke-width="2"/>`;
+    }
   }
 
   // Meta line separated by sparkles.
@@ -96,7 +99,7 @@ export default async function hero({ config, theme: t, data }) {
 .pulse{animation:pulse 1.1s steps(1) infinite}
 @keyframes pulse{50%{fill:${t.paper}}}`;
 
-  const who = `${h.name.join(' ')}: ${h.role.toLowerCase()} heading into ${h.next.toLowerCase()}`;
+  const who = `${h.name.join(' ')}: ${h.role.toLowerCase()}${h.next ? ` heading into ${h.next.toLowerCase()}` : ''}`;
   return [{
     file: 'hero.svg',
     svg: doc({
