@@ -1,6 +1,8 @@
 # Profile generator
 
-Các card neo-brutalism trong `profile/*.svg` được sinh ra bởi thư mục này. GitHub không cho CSS trong README, nên toàn bộ phần thiết kế (viền đen dày, bóng đổ cứng, màu phẳng, font Archivo Black + Space Mono nhúng base64) nằm trong SVG. `README.md` ở gốc repo chỉ còn là danh sách `<img>`.
+Các ảnh SVG trong `profile/` được sinh ra bởi thư mục này. GitHub không cho CSS trong README, nên toàn bộ phần thiết kế nằm trong SVG, còn `README.md` ở gốc repo chỉ là vài thẻ ảnh.
+
+README hiện chỉ dùng module `orbit`: tên ở giữa, logo các tool DevOps bay vòng quanh trên ba vành elip chấm, bên dưới là câu giới thiệu và con rắn ăn contribution graph. Các module neo-brutalism cũ (hero, marquee, stats, languages, ...) vẫn còn và vẫn chạy được, chỉ đang tắt trong `config.modules`.
 
 Không cần `npm install`: chỉ dùng Node 18+ và `fetch` có sẵn.
 
@@ -9,13 +11,20 @@ Không cần `npm install`: chỉ dùng Node 18+ và `fetch` có sẵn.
 | Workflow | Chạy khi | Làm gì |
 |---|---|---|
 | `profile.yml` | 08:00 hằng ngày, khi push vào `generator/**`, bấm tay, hoặc `repository_dispatch` | Chạy `node generator/build.mjs` rồi commit `profile/` |
+| `check.yml` | Mỗi pull request | Chạy generator vào một thư mục tạm và kiểm mọi ảnh trong `README.md` có tệp tương ứng; không commit gì |
 | `snake.yml` | 07:00 hằng ngày, bấm tay | Vẽ rắn ăn contribution graph (palette cùng tông), đẩy lên nhánh `output` |
 
 Secrets đang dùng: `LINHTINH_TOKEN2` (PAT, để thấy repo private khi tính ngôn ngữ; không có thì tự lùi về `GITHUB_TOKEN`), `LINHTINH_TOKEN` (cho snake). Tuỳ chọn: `WAKATIME_API_KEY`.
 
 ## Sửa nội dung
 
-Mọi chữ trên profile nằm trong `generator/config.mjs`: tên, role, danh sách tech chạy ngang, tiêu đề section, các project card, màu. Sửa xong thì push, workflow tự vẽ lại.
+Mọi chữ trên ảnh nằm trong `generator/config.mjs`; câu giới thiệu dưới vòng quỹ đạo viết thẳng trong `README.md`. Sửa xong thì push, workflow tự vẽ lại.
+
+**Thêm hay bớt một tool.** Chép logo chính thức (SVG) vào `generator/logos/<id>.svg`, ghi nguồn vào `generator/logos/SOURCES.md`, thêm `{ id, name }` vào `config.tools`, rồi chỉnh `count` của các vành trong `config.orbit.rings` sao cho tổng bằng số tool (generator báo lỗi nếu lệch). Tool xếp vào vành theo thứ tự trong danh sách, vành trong cùng trước. Nhớ sửa luôn `alt` của ảnh trong `README.md`.
+
+**Sáng và tối.** `orbit` xuất hai tệp màu cố định, `orbit-light.svg` và `orbit-dark.svg`, và README chọn bằng `<picture>`. Không dùng `prefers-color-scheme` bên trong SVG: truy vấn đó đi theo chế độ sáng tối của máy người xem chứ không theo giao diện GitHub, máy tối mà GitHub sáng thì ra chữ trắng trên nền trắng.
+
+Chữ trong `orbit` dùng font hệ thống (tên có dấu tiếng Việt); các module cũ dùng font nhúng chỉ có ASCII.
 
 **Màu.** Bảng màu là đỏ, xanh lam, vàng, mỗi màu một tông đậm và một tông nhạt, trên nền kem. Tên các ô màu trong `palette` (`pink`, `orange`, `lime`, `violet`) là tên cũ từ thiết kế 6 màu ban đầu; xem chú thích bên cạnh để biết ô nào là màu gì. Màu nào cũng phải đủ sáng để chữ đen đặt lên đọc được. Nếu đổi bảng màu, nhớ đổi cả màu rắn trong `.github/workflows/snake.yml`.
 
@@ -37,8 +46,11 @@ Config thử chỉ cần import config chính rồi ghi đè phần muốn đổ
 
 ## Các module
 
+Đang bật: chỉ `orbit`. Các module còn lại bật lại bằng cách thêm tên vào `config.modules` và thêm `<img>` vào `README.md`.
+
 | Module | File sinh ra | Dữ liệu |
 |---|---|---|
+| `orbit` | `orbit-light.svg`, `orbit-dark.svg` | `config.orbit` (tên, vai trò, các vành) + `config.tools` + logo trong `generator/logos/`; không cần gọi API |
 | `hero` | `hero.svg` | Tên, role, tổng contribution, repo public vừa push gần nhất; thanh loading cạnh `DEVOPS` lấy từ tiến độ bài học |
 | `marquee` | `marquee.svg` | `config.stack`; màu dải lấy từ `config.marquee.fill` |
 | `sections` | `section-*.svg` | `config.sections` |

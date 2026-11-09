@@ -1,0 +1,39 @@
+name: Check profile
+
+# Pull requests only: render every enabled module into a scratch folder, then make sure each local image
+# the README points at exists and is a well-formed SVG. Nothing is committed.
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Render cards
+        run: node generator/build.mjs --out=/tmp/profile
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Check README images
+        run: |
+          node --input-type=module -e "
+          import { readFileSync, existsSync } from 'node:fs';
+          const readme = readFileSync('README.md', 'utf8');
+          const refs = [...readme.matchAll(/(?:src|srcset)=\"\.\/profile\/([^\"]+)\"/g)].map((m) => m[1]);
+          if (!refs.length) throw new Error('README points at no local profile images');
+          let bad = 0;
+          for (const f of refs) {
+            const p = '/tmp/profile/' + f;
+            if (!existsSync(p)) { console.error('missing: ' + f); bad++; continue; }
+            const svg = readFileSync(p, 'utf8');
+            if (!svg.startsWith('<svg') || !svg.trimEnd().endsWith('</svg>')) { console.error('not an svg: ' + f); bad++; continue; }
+            console.log('ok: ' + f + ' (' + svg.length + ' bytes)');
+          }
+          if (bad) process.exit(1);
+          "
