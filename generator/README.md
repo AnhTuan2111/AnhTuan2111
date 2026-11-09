@@ -2,7 +2,7 @@
 
 Các ảnh SVG trong `profile/` được sinh ra bởi thư mục này. GitHub không cho CSS trong README, nên toàn bộ phần thiết kế nằm trong SVG, còn `README.md` ở gốc repo chỉ là vài thẻ ảnh.
 
-README hiện chỉ dùng module `orbit`: tên ở giữa, logo các tool DevOps bay vòng quanh trên ba vành elip chấm, bên dưới là câu giới thiệu và con rắn ăn contribution graph. Các module neo-brutalism cũ (hero, marquee, stats, languages, ...) vẫn còn và vẫn chạy được, chỉ đang tắt trong `config.modules`.
+README hiện không dùng ảnh nào do thư mục này sinh ra: nó chỉ là một khối YAML viết như manifest Kubernetes (`kind: Mercenary`) và con rắn ăn contribution graph (`snake.yml`). Muốn sửa danh sách tool thì sửa thẳng khối YAML trong `README.md`. Mọi module (`orbit` và các module neo-brutalism cũ) vẫn còn và vẫn chạy được, chỉ đang tắt vì `config.modules` để trống.
 
 Không cần `npm install`: chỉ dùng Node 18+ và `fetch` có sẵn.
 
@@ -18,7 +18,7 @@ Secrets đang dùng: `LINHTINH_TOKEN2` (PAT, để thấy repo private khi tính
 
 ## Sửa nội dung
 
-Mọi chữ trên ảnh nằm trong `generator/config.mjs`; câu giới thiệu dưới vòng quỹ đạo viết thẳng trong `README.md`. Sửa xong thì push, workflow tự vẽ lại.
+Mọi chữ trên các ảnh do generator sinh ra nằm trong `generator/config.mjs`. Sửa xong thì push, workflow tự vẽ lại.
 
 **Thêm hay bớt một tool.** Chép logo chính thức (SVG) vào `generator/logos/<id>.svg`, ghi nguồn vào `generator/logos/SOURCES.md`, thêm `{ id, name }` vào `config.tools`, rồi chỉnh `count` của các vành trong `config.orbit.rings` sao cho tổng bằng số tool (generator báo lỗi nếu lệch). Tool xếp vào vành theo thứ tự trong danh sách, vành trong cùng trước. Nhớ sửa luôn `alt` của ảnh trong `README.md`.
 
@@ -46,7 +46,7 @@ Config thử chỉ cần import config chính rồi ghi đè phần muốn đổ
 
 ## Các module
 
-Đang bật: chỉ `orbit`. Các module còn lại bật lại bằng cách thêm tên vào `config.modules` và thêm `<img>` vào `README.md`.
+Đang bật: không module nào. Bật lại một module bằng cách thêm tên vào `config.modules` và thêm `<img>` (hoặc `<picture>` với `orbit`) vào `README.md`.
 
 | Module | File sinh ra | Dữ liệu |
 |---|---|---|

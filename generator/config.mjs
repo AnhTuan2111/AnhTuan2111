@@ -6,11 +6,11 @@ export default {
   timeZone: 'Asia/Ho_Chi_Minh',
   outDir: 'profile',
 
-  // Modules to render, one file each in generator/modules/. Remove a name to stop rendering that card;
-  // add a new file + name here to plug in your own. The README only shows `orbit` now; the other modules
-  // (hero, marquee, sections, stats, languages, wakatime, footer, projects, roadmap, learning) still work
-  // and keep their settings below, so adding a name back plus an <img> in README.md brings that card back.
-  modules: ['orbit'],
+  // Modules to render, one file each in generator/modules/. The README is a plain YAML block plus the snake
+  // now, so nothing is rendered. Every module (orbit, hero, marquee, sections, stats, languages, wakatime,
+  // footer, projects, roadmap, learning) still works with its settings below: add its name here and an
+  // <img> or <picture> to README.md to bring a card back.
+  modules: [],
 
   // Red, blue and yellow, each in a strong and a light tone, on cream. The cards were first written for six
   // unrelated accents, so the slot names (pink, orange, lime, violet) are historical: go by the comments.

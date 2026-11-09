@@ -1,17 +1,22 @@
-<div align="center">
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./profile/orbit-dark.svg">
-  <img src="./profile/orbit-light.svg" width="100%" alt="Nguyễn Anh Tuấn, DevOps engineer, with the logos of the tools I run circling the name: Docker, Kaniko, Harbor, GitLab CI, GitHub Actions, Argo CD, Kubernetes, OpenShift, Rancher, Longhorn, Portainer, Ubuntu, Bash, Incus, Nginx, Nginx Proxy Manager, HAProxy, Keycloak, OpenVPN, Prometheus, Grafana, Loki, Alloy, PostgreSQL, Patroni, etcd, Redis, MinIO, rclone">
-</picture>
-
-A mercenary DevOps
-
-<br>
+```yaml
+apiVersion: people/v1
+kind: Mercenary
+metadata:
+  name: random-guy
+spec:
+  deploysTo: [vps, kubernetes, openshift, on-prem]
+  arsenal:
+    containers:    [docker, compose, harbor, portainer, kaniko]
+    clusters:      [kubernetes, rancher, openshift, longhorn]
+    delivery:      [gitlab-ci, github-actions, argocd]
+    observability: [prometheus, grafana, loki, alloy]
+    data:          [postgresql, patroni, etcd, pgbouncer, minio, redis]
+    edge:          [nginx, haproxy, keepalived, keycloak, openvpn]
+status:
+  phase: Running
+```
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/AnhTuan2111/AnhTuan2111/output/github-snake-dark.svg">
   <img src="https://raw.githubusercontent.com/AnhTuan2111/AnhTuan2111/output/github-snake.svg" width="100%" alt="A snake eating my contribution graph">
 </picture>
-
-</div>

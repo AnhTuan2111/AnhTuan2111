@@ -1,7 +1,7 @@
 name: Check profile
 
 # Pull requests only: render every enabled module into a scratch folder, then make sure each local image
-# the README points at exists and is a well-formed SVG. Nothing is committed.
+# the README points at exists and is a well-formed SVG. A README with no local images passes. Nothing is committed.
 on:
   pull_request:
 
@@ -26,7 +26,7 @@ jobs:
           import { readFileSync, existsSync } from 'node:fs';
           const readme = readFileSync('README.md', 'utf8');
           const refs = [...readme.matchAll(/(?:src|srcset)=\"\.\/profile\/([^\"]+)\"/g)].map((m) => m[1]);
-          if (!refs.length) throw new Error('README points at no local profile images');
+          if (!refs.length) console.log('README points at no local profile images; nothing to check');
           let bad = 0;
           for (const f of refs) {
             const p = '/tmp/profile/' + f;
