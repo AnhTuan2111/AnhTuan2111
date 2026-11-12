@@ -15,8 +15,3 @@ spec:
 status:
   phase: Running
 ```
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/AnhTuan2111/AnhTuan2111/output/github-snake-dark.svg">
-  <img src="https://raw.githubusercontent.com/AnhTuan2111/AnhTuan2111/output/github-snake.svg" width="100%" alt="A snake eating my contribution graph">
-</picture>
